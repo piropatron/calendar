@@ -18,12 +18,16 @@ const MonthPanel = createReactClass({
     onChange: PropTypes.func,
     disabledDate: PropTypes.func,
     onSelect: PropTypes.func,
+    showYearNext: PropTypes.bool,
+    showYearPrev: PropTypes.bool,
   },
 
   getDefaultProps() {
     return {
       onChange: noop,
       onSelect: noop,
+      showYearNext: true,
+      showYearPrev: true,
     };
   },
 
@@ -76,12 +80,18 @@ const MonthPanel = createReactClass({
       <div className={prefixCls} style={props.style}>
         <div>
           <div className={`${prefixCls}-header`}>
-            <a
-              className={`${prefixCls}-prev-year-btn`}
-              role="button"
-              onClick={this.previousYear}
-              title={locale.previousYear}
-            />
+            {
+              props.showYearPrev ? (
+                <a
+                  className={`${prefixCls}-prev-year-btn`}
+                  role="button"
+                  onClick={this.previousYear}
+                  title={locale.previousYear}
+                />
+              ) : (
+                <span/>
+              )
+            }
 
             <a
               className={`${prefixCls}-year-select`}
@@ -92,13 +102,18 @@ const MonthPanel = createReactClass({
               <span className={`${prefixCls}-year-select-content`}>{year}</span>
               <span className={`${prefixCls}-year-select-arrow`}>x</span>
             </a>
-
-            <a
-              className={`${prefixCls}-next-year-btn`}
-              role="button"
-              onClick={this.nextYear}
-              title={locale.nextYear}
-            />
+            {
+              props.showYearNext ? (
+                <a
+                  className={`${prefixCls}-next-year-btn`}
+                  role="button"
+                  onClick={this.nextYear}
+                  title={locale.nextYear}
+                />
+              ) : (
+                <span/>
+              )
+            }
           </div>
           <div className={`${prefixCls}-body`}>
             <MonthTable

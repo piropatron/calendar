@@ -33,6 +33,8 @@ const CalendarHeader = createReactClass({
     enablePrev: PropTypes.any,
     enableNext: PropTypes.any,
     disabledMonth: PropTypes.func,
+    showYearNext: PropTypes.bool,
+    showYearPrev: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -142,6 +144,8 @@ const CalendarHeader = createReactClass({
       enableNext,
       enablePrev,
       disabledMonth,
+      showYearNext,
+      showYearPrev,
     } = props;
 
     let panel = null;
@@ -156,6 +160,8 @@ const CalendarHeader = createReactClass({
           disabledDate={disabledMonth}
           cellRender={props.monthCellRender}
           contentRender={props.monthCellContentRender}
+          showYearNext={showYearNext}
+          showYearPrev={showYearPrev}
         />
       );
     }

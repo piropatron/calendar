@@ -189,7 +189,7 @@ const CalendarHeader = createReactClass({
 
     return (<div className={`${prefixCls}-header`}>
       <div style={{ position: 'relative' }}>
-        {showIf(enablePrev && !showTimePicker,
+        {showIf(enablePrev && !showTimePicker && showYearNext,
           <a
             className={`${prefixCls}-prev-year-btn`}
             role="button"
@@ -210,7 +210,7 @@ const CalendarHeader = createReactClass({
             onClick={this.nextMonth}
             title={locale.nextMonth}
           />)}
-        {showIf(enableNext && !showTimePicker,
+        {showIf(enableNext && !showTimePicker && showYearPrev,
           <a
             className={`${prefixCls}-next-year-btn`}
             onClick={this.nextYear}

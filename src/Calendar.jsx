@@ -62,6 +62,8 @@ const Calendar = createReactClass({
     showWeekNumber: PropTypes.bool,
     showToday: PropTypes.bool,
     showOk: PropTypes.bool,
+    showYearNext: PropTypes.bool,
+    showYearPrev: PropTypes.bool,
     onSelect: PropTypes.func,
     onOk: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -217,7 +219,7 @@ const Calendar = createReactClass({
     const {
       locale, prefixCls, disabledDate,
       dateInputPlaceholder, timePicker,
-      disabledTime,
+      disabledTime, showYearNext, showYearPrev,
     } = props;
     const { value, selectedValue, mode } = state;
     const showTimePicker = mode === 'time';
@@ -273,6 +275,8 @@ const Calendar = createReactClass({
             onValueChange={this.setValue}
             onPanelChange={this.onPanelChange}
             showTimePicker={showTimePicker}
+            showYearNext={showYearNext}
+            showYearPrev={showYearPrev}
             prefixCls={prefixCls}
           />
           {timePicker && showTimePicker ?
